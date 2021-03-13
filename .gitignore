@@ -133,4 +133,5 @@ dmypy.json
 
 # Django
 *.pyc
-media
+/agency/media
+/agency/static

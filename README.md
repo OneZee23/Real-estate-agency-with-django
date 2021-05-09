@@ -12,6 +12,6 @@ $ https://docs.docker.com/docker-for-windows/install/
 Mac: 
 $ https://docs.docker.com/docker-for-mac/install/ 
 ### 2. Запустить комманду docker-compose up
-$ docker-compose up --build
+$ docker-compose up
 
 ### Вроде бы всё что нужно ( ͡° ͜ʖ ͡°) 

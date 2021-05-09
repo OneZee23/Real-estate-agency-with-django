@@ -7,8 +7,8 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-md-12">
-      <h1 class="display-4">About BT Real Estate</h1>
-      <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+      <h1 class="display-4">Агенство недвижимости Nano</h1>
+      <p class="lead">Нижний Новгород</p>
     </div>
   </div>
 </div>
@@ -21,9 +21,9 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="{% url 'index' %}">
-          <i class="fas fa-home"></i> Home</a>
+          <i class="fas fa-home"></i> Главная</a>
       </li>
-      <li class="breadcrumb-item active"> About</li>
+      <li class="breadcrumb-item active"> О компании</li>
     </ol>
   </nav>
 </div>
@@ -33,21 +33,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h2>We Search For The Perfect Home</h2>
-      <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+      <h2>Мы найдем для Вас уютный дом</h2>
+      <p class="lead">Мы - агенство недвижимости в городе Нижний Новгород "Nano"!</p>
       <img src="{% static 'img/about.jpg' %}" alt="">
-      <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
-        neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
-        commodi id libero eveniet harum perferendis laborum molestias quia.</p>
+      <p class="mt-4">С каждым клиентом мы общаемся лично, учитываем потребности, возможности и даже характер человека, чтобы подобрать по-настоящему желанное место для жизни.</p>
     </div>
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
+        <img class="card-img-top" src="{% static 'img/realtors/1.png' %}" alt="Работник месяца">
         <div class="card-body">
-          <h5 class="card-title">Seller Of The Month</h5>
-          <h6 class="text-secondary">Kyle Brown</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt amet, illo itaque similique repellat.
-            content.
+          <h5 class="card-title">Риэлтор месяца</h5>
+          <h6 class="text-secondary">Григорий Петрович Болгар</h6>
+          <p class="card-text">Григорий Петрович Болгар это долларовый миллиардер просто.
           </p>
         </div>
       </div>
@@ -58,49 +55,49 @@
 
 <!-- Work -->
 <section id="work" class="bg-dark text-white text-center">
-<h2 class="display-4">We Work For You</h2>
-<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
+<h2 class="display-4">Мы работаем на Вас</h2>
+<h4>Выберите себе подходящий и уютный дом для Вас и Вашей семьи используя расширенный поиск!</h4>
 <hr>
-<a href="listings.html" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+<a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">Посмотреть все предложения</a>
 </section>
 
 <!-- Team -->
 <section id="team" class="py-5">
 <div class="container">
-  <h2 class="text-center">Our Team</h2>
+  <h2 class="text-center">Наша команда</h2>
   <div class="row text-center">
     <div class="col-md-4">
-      <img src="assets/img/realtors/kyle.jpg" alt="" class="rounded-circle mb-3">
-      <h4>Kyle Brown</h4>
+      <img src="{% static 'img/realtors/1.png' %}" alt="" class="rounded-circle mb-3">
+      <h4>Григорий Петрович Болгар</h4>
       <p class="text-success">
-        <i class="fas fa-award text-success mb-3"></i> Realtor</p>
+        <i class="fas fa-award text-success mb-3"></i> Риэлтор</p>
       <hr>
       <p>
-        <i class="fas fa-phone"></i> (555)-555-5555</p>
+        <i class="fas fa-phone"></i> (999)-99-99-9999</p>
       <p>
-        <i class="fas fa-envelope-open"></i> kyle@btrealestate.co</p>
+        <i class="fas fa-envelope-open"></i> george@nano.com</p>
     </div>
 
     <div class="col-md-4">
-      <img src="assets/img/realtors/mark.jpg" alt="" class="rounded-circle mb-3">
-      <h4>Mark Hudson</h4>
-      <p class="text-success">Realtor</p>
+      <img src="{% static 'img/realtors/2.png' %}" alt="" class="rounded-circle mb-3">
+      <h4>Альбина Амурхановна Дежникова</h4>
+      <p class="text-success">Риэлтор</p>
       <hr>
       <p>
-        <i class="fas fa-phone"></i> (444)-444-4444</p>
+        <i class="fas fa-phone"></i> (999)-99-99-9999</p>
       <p>
-        <i class="fas fa-envelope-open"></i> mark@btrealestate.co</p>
+        <i class="fas fa-envelope-open"></i> albina@nano.com</p>
     </div>
 
     <div class="col-md-4">
-      <img src="assets/img/realtors/jenny.jpg" alt="" class="rounded-circle mb-3">
-      <h4>Jenny Johnson</h4>
-      <p class="text-success">Realtor</p>
+      <img src="{% static 'img/realtors/3.png' %}" alt="" class="rounded-circle mb-3">
+      <h4>Наталья Олеговна Доможилкина</h4>
+      <p class="text-success">Риэлтор</p>
       <hr>
       <p>
-        <i class="fas fa-phone"></i> (333)-333-3333</p>
+        <i class="fas fa-phone"></i> (999)-99-99-9999</p>
       <p>
-        <i class="fas fa-envelope-open"></i> jenny@btrealestate.co</p>
+        <i class="fas fa-envelope-open"></i> natalia@nano.com</p>
     </div>
   </div>
 </div>

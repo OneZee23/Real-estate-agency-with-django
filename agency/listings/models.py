@@ -12,6 +12,7 @@ class Listing(models.Model):
   house_number = models.CharField("Номер дома", max_length=200)
   price = models.IntegerField("Цена")
   total_area = models.IntegerField("Общая площадь в м^2")
+  rooms_number = models.IntegerField("Количество комнат", default=1)
   balcony = models.BooleanField("Наличие балкона", default=False)
   floors_number = models.IntegerField("Этажность дома", null=True, blank=True)
   ceiling_height = models.FloatField("Высота потолков", null=True, blank=True)

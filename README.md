@@ -11,7 +11,14 @@ $ https://docs.docker.com/docker-for-windows/install/
 
 Mac: 
 $ https://docs.docker.com/docker-for-mac/install/ 
+
+### 2. Перейти в директорию agency в скачанном проекте
+$ cd ./agency
+
 ### 2. Запустить комманду docker-compose up
 $ docker-compose up
 
-### Вроде бы всё что нужно ( ͡° ͜ʖ ͡°) 
+Если что-то не запустилось, вызвалась ошибка, то нужно попробовать еще раз ввести команду 
+$ docker-compose up
+
+### Вроде бы всё ( ͡° ͜ʖ ͡°) 

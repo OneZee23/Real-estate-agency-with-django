@@ -135,3 +135,6 @@ dmypy.json
 *.pyc
 /agency/media
 /agency/static
+
+# Docker-compose
+/data

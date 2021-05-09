@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - ../data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=realestateagency
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+  web:
+    image: app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/agency
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    depends_on:
+      - migration
+  migration:
+    build: .
+    image: app
+    command: python manage.py migrate
+    volumes:
+      - .:/agency
+    links:
+      - db
+    depends_on:
+      - db

@@ -26,7 +26,7 @@ SECRET_KEY = 'r%jp4v@mw-sb+00ongaz4rb%iv3#qrh=n=ji(qmq+%61cgxx4&'
 # TODO: Перед тем как деплоить в прод, сделать DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,8 +84,8 @@ DATABASES = {
         'NAME': 'realestateagency',
         'USER': 'postgres',
         'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 

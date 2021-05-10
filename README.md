@@ -15,12 +15,16 @@ $ https://docs.docker.com/docker-for-mac/install/
 ### 2. Перейти в директорию agency в скачанном проекте
 $ cd ./agency
 
-### 2. Запустить комманду docker-compose up
-$ docker-compose up
+### 3. Запустить команду, чтобы создать админа
+$ docker-compose run web python manage.py createsuperuser
 
-Если что-то не запустилось, вызвалась ошибка, то нужно попробовать еще раз ввести команду 
+После чего в том же терминале дождаться строки 
 
-Нажать ctrl + c чтобы остановить работу докер контейнеров и запустить снова команду:
+$ Username (leave blank to use 'root'):
+
+И ввести информацию о новом суперпользователе для админки
+
+### 4. Запустить команду docker-compose up
 
 $ docker-compose up
 

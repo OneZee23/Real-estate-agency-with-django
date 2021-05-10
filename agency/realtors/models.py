@@ -8,7 +8,7 @@ class Realtor(models.Model):
   description = models.TextField("Описание", null=True, blank=True)
   phone = models.CharField("Телефон", max_length=200)
   email = models.CharField("Электронная почта", max_length=200)
-  is_mvp = models.BooleanField("Работает в данный момент?", default=False)
+  is_mvp = models.BooleanField("Лучший работник месяца?", default=False)
   hire_date = models.DateTimeField("Дата найма", default=datetime.now, null=True, blank=True)
 
   def __str__(self):

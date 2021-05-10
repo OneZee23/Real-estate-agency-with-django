@@ -13,14 +13,13 @@
       </h1>
       <p class="lead">Здесь вы сможете найти подходящую для вас недвижимость по интересующим вас параметрам, выберите город, улицу, максимальную стоимость и найдите квартиру мечты, удачных поисков!</p>
       <div class="search">
-        <form action="search.html">
+        <form action="{% url 'search' %}">
           <!-- Form Row 1 -->
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label class="sr-only">Keywords</label>
-              <input type="text" name="keywords" class="form-control" placeholder="(улица, дом, балкон, др.)">
+              <label class="sr-only">Street</label>
+              <input type="text" name="street" class="form-control" placeholder="Улица">
             </div>
-
             <div class="col-md-4 mb-3">
               <label class="sr-only">City</label>
               <input type="text" name="city" class="form-control" placeholder="Город">
@@ -37,31 +36,17 @@
               <label class="sr-only">Rooms</label>
               <select name="rooms" class="form-control">
                 <option selected="true" disabled="disabled">Количество комнат (Любое)</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+                {% for key, value in room_choices.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
               </select>
             </div>
             <div class="col-md-6 mb-3">
               <select name="price" class="form-control" id="type">
                 <option selected="true" disabled="disabled">Максимальная цена (Любая)</option>
-                <option value="1000000">₽1,000,000</option>
-                <option value="1500000">₽1,500,000</option>
-                <option value="2000000">₽2,000,000</option>
-                <option value="3000000">₽3,000,000</option>
-                <option value="5000000">₽5,000,000</option>
-                <option value="6000000">₽6,000,000</option>
-                <option value="7000000">₽7,000,000</option>
-                <option value="8000000">₽8,000,000</option>
-                <option value="9000000">₽9,000,000</option>
-                <option value="10000000">₽10,000,000+</option>
+                {% for key, value in price_choices.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
               </select>
             </div>
           </div>

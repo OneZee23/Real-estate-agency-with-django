@@ -1,5 +1,225 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block content %}
-<h1>listing</h1>
+
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">{{ listing.district }}</h1>
+          <p class="lead">
+            <i class="fas fa-map-marker"></i> ул. {{ listing.street }}, {{ listing.house_number }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Главная</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'listings' %}">Список недвижимости</a>
+          </li>
+          <li class="breadcrumb-item active">ул. {{ listing.street }}, {{ listing.house_number }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Listing -->
+  <section id="listing" class="py-4">
+    <div class="container">
+      <a href="{% url 'listings' %}" class="btn btn-light mb-4">Вернутся к списку недвижимости</a>
+      <div class="row">
+        <div class="col-md-9">
+          <!-- Home Main Image -->
+          <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+          <!-- Thumbnails -->
+          <div class="row mb-5 thumbs">
+            {% for photo in photos %}
+              {% if photo %}
+                <div class="col-md-2">
+                  <a href="{{ photo.url }}" data-lightbox="home-images">
+                    <img src="{{ photo.url }}" alt="" class="img-fluid">
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <!-- Fields -->
+          <div class="row mb-5 fields">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-money-bill-alt"></i> Цена:
+                  <span class="float-right">₽ {{ listing.price | intcomma }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-compass"></i> Город:
+                  <span class="float-right">{{ listing.city }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-flag"></i> Этаж:
+                  <span class="float-right">{{ listing.floor }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-flag-checkered"></i> Этажность дома:
+                  {% if listing.floors_number %}
+                  <span class="float-right">{{ listing.floors_number }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-bed"></i> Высота потолков:
+                  {% if listing.ceiling_height %}
+                  <span class="float-right">{{ listing.ceiling_height }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-angle-double-right"></i> Материал дома:
+                  {% if listing.material %}
+                  <span class="float-right">{{ listing.material }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-yen-sign"></i> Год постройки:
+                  {% if listing.year_construction %}
+                  <span class="float-right">{{ listing.year_construction }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-th-large"></i> Площадь:
+                  <span class="float-right">{{ listing.total_area }} м<sup><small>2</small></sup>
+                  </span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-couch"></i> Кол. комнат:
+                  <span class="float-right">{{ listing.rooms_number }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-stream"></i> Наличие балкона:
+                  {% if listing.balcony == True %}
+                  <span class="float-right">Есть</span>
+                  {% else %}
+                  <span class="float-right">Нет</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-th-large"></i> Площадь кухни:
+                  {% if listing.kitchen_area %}
+                  <span class="float-right">{{ listing.kitchen_area }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-th-large"></i> Площадь жилая:
+                  {% if listing.residental_area %}
+                  <span class="float-right">{{ listing.residental_area }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-building"></i> Строительная компания:
+                  {% if listing.company_construction %}
+                  <span class="float-right">{{ listing.company_construction }}</span>
+                  {% else %}
+                  <span class="float-right">-</span>
+                  {% endif %}
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-calendar"></i> Дата выставления на продажу:
+                  <span class="float-right">{{ listing.list_date.day }}.{{ listing.list_date.month }}.{{ listing.list_date.year }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-award"></i> Риэлтор:
+                  <span class="float-right">{{ listing.realtor.name }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="row mb-5">
+            <div class="col-md-12">
+              Прекрасное жилое помещение в городе {{ listing.city }} на улице {{ listing.street }}, {{ listing.house_number }}
+              находящееся в районе {{ listing.district }} с общей площадью - {{ listing.total_area }}м<sup><small>2</small></sup> за приемлемую цену в ₽ {{ listing.price | intcomma }}.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card mb-3">
+            <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Риэлтор недвижимости</h5>
+              <h6 class="text-secondary">{{ listing.realtor.name }}</h6>
+            </div>
+          </div>
+          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Оставьте заявку на покупку дома</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Modal -->
+  <div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="property_name" class="col-form-label">Property:</label>
+              <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce" disabled>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Phone:</label>
+              <input type="text" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Message:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <hr>
+            <input type="submit" value="Send" class="btn btn-block btn-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

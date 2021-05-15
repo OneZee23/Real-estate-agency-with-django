@@ -24,7 +24,7 @@ SECRET_KEY = 'r%jp4v@mw-sb+00ongaz4rb%iv3#qrh=n=ji(qmq+%61cgxx4&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # TODO: Перед тем как деплоить в прод, сделать DEBUG = False
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

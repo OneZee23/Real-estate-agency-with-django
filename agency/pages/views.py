@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from listings.choices import price_choices, room_choices
 
 from listings.models import Listing
 from realtors.models import Realtor
+from news.models import News
+
 
 
 def index(request):
@@ -28,7 +31,3 @@ def about(request):
   }
 
   return render(request, 'pages/about.html', context)
-
-
-def blog(request):
-  return render(request, 'pages/blog.html')

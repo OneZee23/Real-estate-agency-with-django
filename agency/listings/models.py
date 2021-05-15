@@ -33,3 +33,8 @@ class Listing(models.Model):
 
   def __str__(self):
     return self.street
+
+  class Meta:
+    verbose_name = 'Недвижимость'
+    verbose_name_plural = 'Недвижимость'
+    ordering = ['list_date', 'city']

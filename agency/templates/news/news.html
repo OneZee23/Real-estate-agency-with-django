@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h1 class="display-4">Здесь будет новостной блог</h1>
+      <p class="lead">Полезные новости о недвижимости</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'index' %}">
+          <i class="fas fa-home"></i> Главная</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'news' %}">Новости</a>
+      </li>
+      <li class="breadcrumb-item active"> {{ news.title }}</li>
+    </ol>
+  </nav>
+</div>
+
+<!-- News chart -->
+  <section id="listing" class="py-4">
+    <div class="container">
+      <a href="{% url 'news' %}" class="btn btn-light mb-4">Вернутся к списку новостей</a>
+      <div class="row">
+        <div class="col-md-9">
+          <!-- Home Main Image -->
+          <img src="{{ news.photo.url }}" alt="" class="img-main img-fluid mb-3">
+          <!-- Thumbnails -->
+          <!-- Fields -->
+          <div class="row mb-5 fields">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-people-carry"></i> Автор:
+                  <span class="float-right">{{ news.author_name }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-calendar"></i> Дата обновления статьи:
+                  <span class="float-right">{{ news.updated_at.day }}.{{ news.updated_at.month }}.{{ news.updated_at.year }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="row mb-5">
+            <div class="col-md-12">
+              {{ news.text }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="{% url 'news' %}" class="btn btn-light mb-4">Вернутся к списку новостей</a>
+    </div>
+  </section>
+</section>
+{% endblock %}
